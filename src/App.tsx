@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App({ divElement }: { divElement: HTMLDivElement }) {
@@ -9,7 +8,9 @@ function App({ divElement }: { divElement: HTMLDivElement }) {
     <div className="App">
       <header className="App-header">
         <img
-          src={logo}
+          src={
+            "https://static.vecteezy.com/system/resources/previews/001/195/909/original/water-logo-splash-png.png"
+          }
           className="App-logo"
           alt="logo"
           style={{ width: "100px", height: "100px" }}

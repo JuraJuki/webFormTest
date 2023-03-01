@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const widgetDivs = document.querySelectorAll(".test_widget");
-
 widgetDivs.forEach((divElement) => {
   const root = ReactDOM.createRoot(divElement);
   root.render(
