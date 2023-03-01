@@ -2,7 +2,9 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-function App() {
+function App({ divElement }: { divElement: HTMLDivElement }) {
+  console.log(divElement);
+
   return (
     <div className="App">
       <header className="App-header">
