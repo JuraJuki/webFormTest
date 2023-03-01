@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const widgetDivs = document.querySelectorAll(".test_widget");
+const widgetDivs = document.querySelectorAll(".swenWebForm");
 widgetDivs.forEach((divElement) => {
   const root = ReactDOM.createRoot(divElement);
   root.render(

@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
+import { useRootAttributes } from "src/helpers/useRootAttributes";
 
 function App({ divElement }: { divElement: HTMLDivElement }) {
-  console.log(divElement);
+  const rootAttributes = useRootAttributes(divElement);
+  console.log(rootAttributes);
 
   return (
     <div className="App">
