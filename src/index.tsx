@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import { FormContextProvider } from "src/context/FormContext/FormContextProvider";
 import App from "./App";
+import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 const widgetDivs = document.querySelectorAll(".swenWebForm");
@@ -9,7 +10,9 @@ widgetDivs.forEach((divElement) => {
   const root = ReactDOM.createRoot(divElement);
   root.render(
     <React.StrictMode>
-      <App divElement={divElement as HTMLDivElement} />
+      <FormContextProvider>
+        <App divElement={divElement as HTMLDivElement} />
+      </FormContextProvider>
     </React.StrictMode>
   );
 });
