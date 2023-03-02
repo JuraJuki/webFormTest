@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "buildAndMoveMainBundle": "react-scripts build && mv build/static/js/main*.js src/main.js && mv build/static/css/main*.css src/main.css",
+    "buildAndMoveMainBundle": "react-scripts build && mv build/static/js/main*.js src/build/main.js && mv build/static/css/main*.css src/build/main.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
