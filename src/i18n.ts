@@ -23,4 +23,9 @@ i18n
     resources,
   });
 
+// how to change language
+//  const changeLanguage = (lng) => {
+//   i18n.changeLanguage(lng);
+// };
+
 export default i18n;

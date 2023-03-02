@@ -1,24 +1,28 @@
-import { Checkbox, DatePicker, Form, Radio, Select } from "antd";
+import { Checkbox, DatePicker, Form, Radio } from "antd";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AccommodationTypePicker } from "src/components/WebForm/components/AccommodationTypePicker/AccommodationTypePicker";
 import { FItem } from "src/components/WebForm/components/FItem/FItem";
+import { GuestInformationSection } from "src/components/WebForm/components/GuestInformationSection/GuestInformationSection";
+import { GuestPicker } from "src/components/WebForm/components/GuestPicker/GuestPicker";
+import { FItemName } from "src/components/WebForm/enums/FItemName";
+import { AppLanguage } from "src/enums/AppLanguage";
+import { getLocale } from "src/helpers/getLocale";
 import classes from "./WebForm.module.scss";
 
 const { RangePicker } = DatePicker;
-const { Option } = Select;
 
 export const WebForm = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [category, setCategory] = useState("mobileHome");
   const accommodationTypeHasNextToSea = true;
 
-  //  const changeLanguage = (lng) => {
-  //   i18n.changeLanguage(lng);
-  // };
+  const handleSubmit = (values: any) => {
+    console.log(values);
+  };
 
   return (
     <div className={classes.wrap}>
-      <span>Kategorija smještaja</span>
       <span>{t("accommodationTypeCategory")}</span>
       <Radio.Group
         className={classes.category}
@@ -33,42 +37,31 @@ export const WebForm = () => {
         <Radio value={"campingPitch"}>Parcele</Radio>
       </Radio.Group>
 
-      <Form className={classes.form} layout={"vertical"}>
-        <FItem label={"Razdoblje"}>
-          <RangePicker />
+      <Form className={classes.form} layout={"vertical"} onFinish={handleSubmit}>
+        <FItem label={t("period")} name={FItemName.Period}>
+          <RangePicker locale={getLocale(AppLanguage.HR)} format={"DD.MM.YYYY."} />
         </FItem>
-        <FItem label={"Odaberite tip mobilne kućice"}>
-          <Select style={{ width: "100%" }}>
-            <Option key={"a"}>a</Option>
-            <Option key={"b"}>b</Option>
-          </Select>
+        <FItem label={t("accommodationType")} name={FItemName.AccommodationType}>
+          <AccommodationTypePicker />
         </FItem>
         {accommodationTypeHasNextToSea ? (
-          <FItem>
-            <Checkbox>Prvi red do mora</Checkbox>
+          <FItem name={FItemName.NextToSea} valuePropName={"checked"}>
+            <Checkbox>{t("nextToSea")}</Checkbox>
           </FItem>
         ) : null}
-        <FItem>
-          <Select
-            style={{ width: "100%" }}
-            // special select with - +
-          >
-            <Option key={"adults"}>adults</Option>
-            <Option key={"children"}>children</Option>
-          </Select>
+        <FItem label={t("personPicker.label")} name={FItemName.GuestPicker}>
+          <GuestPicker />
         </FItem>
-        <FItem>
-          <Checkbox>Kućni ljubimac</Checkbox>
+        <FItem name={FItemName.Pet} valuePropName={"checked"}>
+          <Checkbox>{t("pet")}</Checkbox>
         </FItem>
-        <FItem>
-          <Checkbox>Vez za brod</Checkbox>
+        <FItem name={FItemName.BoatRope} valuePropName={"checked"}>
+          <Checkbox>{t("boatRope")}</Checkbox>
         </FItem>
-        <FItem>
-          <Checkbox>
-            7-dnevni najam dječje opreme (dječja kolica Monsters, stolica za bebu, dječji krevetić,
-            kadica za kupanje)
-          </Checkbox>
+        <FItem name={FItemName.BabyEquipment} valuePropName={"checked"}>
+          <Checkbox>{t("babyEquipment")}</Checkbox>
         </FItem>
+        <GuestInformationSection />
       </Form>
     </div>
   );

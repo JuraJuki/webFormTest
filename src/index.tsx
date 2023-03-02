@@ -1,3 +1,9 @@
+import dayjs from "dayjs";
+import "dayjs/locale/de";
+import "dayjs/locale/en";
+import "dayjs/locale/hr";
+import "dayjs/locale/it";
+import "dayjs/locale/sl";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { FormContextProvider } from "src/context/FormContext/FormContextProvider";
@@ -5,6 +11,8 @@ import App from "./App";
 import "./i18n";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+
+dayjs.locale("hr");
 
 const widgetDivs = document.querySelectorAll(".swenWebForm");
 widgetDivs.forEach((divElement) => {

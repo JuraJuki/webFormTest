@@ -1,3 +1,16 @@
 {
-  "accommodationTypeCategory": "Accommodation Category"
+  "accommodationTypeCategory": "Accommodation Category",
+  "accommodationType": "Accommodation Type",
+  "period": "Period",
+  "nextToSea": "First row",
+  "personPicker": {
+    "label": "Number of people",
+    "adults": "Adults",
+    "children": "Children",
+    "seniors": "Seniors"
+  },
+  "pet": "Pet",
+  "boatRope": "Boat rope",
+  "babyEquipment": "7-day rental of baby equipment (Monsters stroller, baby chair, baby cot, bath tub).",
+  "submitBtn": "Submit"
 }
