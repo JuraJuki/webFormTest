@@ -31,7 +31,7 @@ export const WebForm = () => {
     return (
       <>
         {fields.map((field) => (
-          <div key={field.key}>
+          <div key={field.key} className={classes.extraAccommodation}>
             <h2>{`${t("extraAccommodation")} ${field.name + 1}`}</h2>
             <Form.Item>
               <FItem
@@ -62,7 +62,7 @@ export const WebForm = () => {
           </div>
         ))}
 
-        <Form.Item>
+        <Form.Item className={classes.addExtraAccommodation}>
           <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
             Add another accommodation
           </Button>
@@ -88,51 +88,37 @@ export const WebForm = () => {
       </Radio.Group>
 
       <Form className={classes.form} layout={"vertical"} onFinish={handleSubmit} form={form}>
-        <FItem label={t("period")} name={FItemName.Period}>
-          <RangePicker
-            locale={getLocale(AppLanguage.HR)}
-            format={"DD.MM.YYYY."}
-            className={classes.rangePicker}
-          />
-        </FItem>
-        <FItem label={t("accommodationType")} name={FItemName.AccommodationType}>
-          <AccommodationTypePicker />
-        </FItem>
-        {accommodationTypeHasNextToSea ? (
-          <FItem name={FItemName.NextToSea} valuePropName={"checked"}>
-            <Checkbox>{t("nextToSea")}</Checkbox>
+        <div className={classes.mainAccommodation}>
+          <h2>{`${t("mainAccommodation")}`}</h2>
+          <FItem label={t("period")} name={FItemName.Period}>
+            <RangePicker
+              locale={getLocale(AppLanguage.HR)}
+              format={"DD.MM.YYYY."}
+              className={classes.rangePicker}
+            />
           </FItem>
-        ) : null}
-        <FItem label={t("personPicker.label")} name={FItemName.GuestPicker}>
-          <GuestPicker />
-        </FItem>
-        <FItem name={FItemName.Pet} valuePropName={"checked"}>
-          <Checkbox>{t("pet")}</Checkbox>
-        </FItem>
-        <FItem name={FItemName.BoatRope} valuePropName={"checked"}>
-          <Checkbox>{t("boatRope")}</Checkbox>
-        </FItem>
-        <FItem name={FItemName.BabyEquipment} valuePropName={"checked"}>
-          <Checkbox>{t("babyEquipment")}</Checkbox>
-        </FItem>
+          <FItem label={t("accommodationType")} name={FItemName.AccommodationType}>
+            <AccommodationTypePicker />
+          </FItem>
+          {accommodationTypeHasNextToSea ? (
+            <FItem name={FItemName.NextToSea} valuePropName={"checked"}>
+              <Checkbox>{t("nextToSea")}</Checkbox>
+            </FItem>
+          ) : null}
+          <FItem label={t("personPicker.label")} name={FItemName.GuestPicker}>
+            <GuestPicker />
+          </FItem>
+          <FItem name={FItemName.Pet} valuePropName={"checked"}>
+            <Checkbox>{t("pet")}</Checkbox>
+          </FItem>
+          <FItem name={FItemName.BoatRope} valuePropName={"checked"}>
+            <Checkbox>{t("boatRope")}</Checkbox>
+          </FItem>
+          <FItem name={FItemName.BabyEquipment} valuePropName={"checked"}>
+            <Checkbox>{t("babyEquipment")}</Checkbox>
+          </FItem>
+        </div>
         <Form.List name="extraAccommodations">{renderExtraAccommodationFields}</Form.List>
-        {/*<Form.List name="extraAccommodations">*/}
-        {/*  {(fields, { add }) => (*/}
-        {/*    <div>*/}
-        {/*      {fields.map((field) => (*/}
-        {/*        <>*/}
-        {/*          <Form.Item {...field}>*/}
-        {/*            <Input />*/}
-        {/*          </Form.Item>*/}
-        {/*          <Form.Item {...field}>*/}
-        {/*            <Input />*/}
-        {/*          </Form.Item>*/}
-        {/*        </>*/}
-        {/*      ))}*/}
-        {/*      <button onClick={add}>aadd</button>*/}
-        {/*    </div>*/}
-        {/*  )}*/}
-        {/*</Form.List>*/}
         <GuestInformationSection />
       </Form>
     </div>

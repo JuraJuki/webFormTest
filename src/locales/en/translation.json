@@ -2,6 +2,7 @@
   "accommodationTypeCategory": "Accommodation Category",
   "accommodationType": "Accommodation Type",
   "accommodation": "Accommodation",
+  "mainAccommodation": "Accommodation",
   "extraAccommodation": "Additional accommodation",
   "period": "Period",
   "nextToSea": "First row",
