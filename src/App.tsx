@@ -2,7 +2,7 @@ import { ConfigProvider } from "antd";
 import { WebForm } from "src/components/WebForm/WebForm";
 import { useFormContext } from "src/context/FormContext/useFormContext";
 import { useRootAttributes } from "src/helpers/useRootAttributes";
-import "./App.css";
+import "./App.module.scss";
 
 function App({ divElement }: { divElement: HTMLDivElement }) {
   useRootAttributes(divElement);
