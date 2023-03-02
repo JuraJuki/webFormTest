@@ -1,4 +1,5 @@
-import { Checkbox, DatePicker, Form, Radio } from "antd";
+import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Checkbox, DatePicker, Form, FormListFieldData, Radio } from "antd";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AccommodationTypePicker } from "src/components/WebForm/components/AccommodationTypePicker/AccommodationTypePicker";
@@ -13,12 +14,61 @@ import classes from "./WebForm.module.scss";
 const { RangePicker } = DatePicker;
 
 export const WebForm = () => {
+  const [form] = Form.useForm();
   const { t } = useTranslation();
   const [category, setCategory] = useState("mobileHome");
   const accommodationTypeHasNextToSea = true;
 
   const handleSubmit = (values: any) => {
     console.log(values);
+  };
+
+  const renderExtraAccommodationFields = (
+    fields: FormListFieldData[],
+    { add, remove }: { add: () => void; remove: (id: number) => void }
+  ) => {
+    console.log(fields);
+    return (
+      <>
+        {fields.map((field) => (
+          <div key={field.key}>
+            <h2>{`${t("extraAccommodation")} ${field.name + 1}`}</h2>
+            <Form.Item>
+              <FItem
+                label={t("accommodationType")}
+                name={[field.name, FItemName.AccommodationType]}
+              >
+                <AccommodationTypePicker />
+              </FItem>
+              {accommodationTypeHasNextToSea ? (
+                <FItem name={[field.name, FItemName.NextToSea]} valuePropName={"checked"}>
+                  <Checkbox>{t("nextToSea")}</Checkbox>
+                </FItem>
+              ) : null}
+              <FItem label={t("personPicker.label")} name={[field.name, FItemName.GuestPicker]}>
+                <GuestPicker />
+              </FItem>
+              <FItem name={[field.name, FItemName.Pet]} valuePropName={"checked"}>
+                <Checkbox>{t("pet")}</Checkbox>
+              </FItem>
+              <FItem name={[field.name, FItemName.BoatRope]} valuePropName={"checked"}>
+                <Checkbox>{t("boatRope")}</Checkbox>
+              </FItem>
+              <FItem name={[field.name, FItemName.BabyEquipment]} valuePropName={"checked"}>
+                <Checkbox>{t("babyEquipment")}</Checkbox>
+              </FItem>
+            </Form.Item>
+            <MinusOutlined onClick={() => remove(field.name)} />
+          </div>
+        ))}
+
+        <Form.Item>
+          <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+            Add another accommodation
+          </Button>
+        </Form.Item>
+      </>
+    );
   };
 
   return (
@@ -37,9 +87,13 @@ export const WebForm = () => {
         <Radio value={"campingPitch"}>Parcele</Radio>
       </Radio.Group>
 
-      <Form className={classes.form} layout={"vertical"} onFinish={handleSubmit}>
+      <Form className={classes.form} layout={"vertical"} onFinish={handleSubmit} form={form}>
         <FItem label={t("period")} name={FItemName.Period}>
-          <RangePicker locale={getLocale(AppLanguage.HR)} format={"DD.MM.YYYY."} />
+          <RangePicker
+            locale={getLocale(AppLanguage.HR)}
+            format={"DD.MM.YYYY."}
+            className={classes.rangePicker}
+          />
         </FItem>
         <FItem label={t("accommodationType")} name={FItemName.AccommodationType}>
           <AccommodationTypePicker />
@@ -61,6 +115,24 @@ export const WebForm = () => {
         <FItem name={FItemName.BabyEquipment} valuePropName={"checked"}>
           <Checkbox>{t("babyEquipment")}</Checkbox>
         </FItem>
+        <Form.List name="extraAccommodations">{renderExtraAccommodationFields}</Form.List>
+        {/*<Form.List name="extraAccommodations">*/}
+        {/*  {(fields, { add }) => (*/}
+        {/*    <div>*/}
+        {/*      {fields.map((field) => (*/}
+        {/*        <>*/}
+        {/*          <Form.Item {...field}>*/}
+        {/*            <Input />*/}
+        {/*          </Form.Item>*/}
+        {/*          <Form.Item {...field}>*/}
+        {/*            <Input />*/}
+        {/*          </Form.Item>*/}
+        {/*        </>*/}
+        {/*      ))}*/}
+        {/*      <button onClick={add}>aadd</button>*/}
+        {/*    </div>*/}
+        {/*  )}*/}
+        {/*</Form.List>*/}
         <GuestInformationSection />
       </Form>
     </div>

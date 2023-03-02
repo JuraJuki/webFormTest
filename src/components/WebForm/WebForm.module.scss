@@ -7,10 +7,15 @@
 }
 
 .form {
-  border: 1px solid red;
+  padding: 24px;
   margin-top: 20px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .category {
   margin-top: 8px;
+}
+
+.rangePicker {
+  width: 100%;
 }
