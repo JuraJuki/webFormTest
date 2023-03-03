@@ -6,8 +6,8 @@ import "./App.module.scss";
 
 function App({ divElement }: { divElement: HTMLDivElement }) {
   useRootAttributes(divElement);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { rootAttributes } = useFormContext();
-  console.log(rootAttributes);
 
   return (
     <ConfigProvider theme={{ token: { colorPrimary: "#00b96b" } }}>

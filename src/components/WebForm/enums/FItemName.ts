@@ -5,6 +5,7 @@ export enum FItemName {
   NextToSea = "nextToSea",
   GuestPicker = "guestPicker",
   Pet = "pet",
+  ParcelVehicle = "parcelVehicle",
   BoatRope = "boatRope",
   BabyEquipment = "babyEquipment",
   FirstName = "firstName",

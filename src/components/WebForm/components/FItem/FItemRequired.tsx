@@ -5,6 +5,7 @@ import { FItemProps } from "src/components/WebForm/components/FItem/FItemProps";
 import classes from "./FItem.module.scss";
 
 export const FItemRequired = (props: FItemProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { t } = useTranslation();
 
   const { short, className, ...rest } = props;

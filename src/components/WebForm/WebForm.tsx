@@ -9,6 +9,7 @@ import { FItem } from "src/components/WebForm/components/FItem/FItem";
 import { FItemRequired } from "src/components/WebForm/components/FItem/FItemRequired";
 import { GuestInformationSection } from "src/components/WebForm/components/GuestInformationSection/GuestInformationSection";
 import { GuestPicker } from "src/components/WebForm/components/GuestPicker/GuestPicker";
+import { ParcelVehiclePicker } from "src/components/WebForm/components/ParcelVehiclePicker/ParcelVehiclePicker";
 import { FItemName } from "src/components/WebForm/enums/FItemName";
 import { AppLanguage } from "src/enums/AppLanguage";
 import { getLocale } from "src/helpers/getLocale";
@@ -32,7 +33,6 @@ export const WebForm = () => {
     fields: FormListFieldData[],
     { add, remove }: { add: () => void; remove: (id: number) => void }
   ) => {
-    console.log(fields);
     return (
       <>
         {fields.map((field) => (
@@ -99,6 +99,11 @@ export const WebForm = () => {
           <FItemRequired label={t("personPicker.label")} name={FItemName.GuestPicker}>
             <GuestPicker />
           </FItemRequired>
+          {isParcel ? (
+            <FItemRequired label={t("parcelVehiclePicker.label")} name={FItemName.ParcelVehicle}>
+              <ParcelVehiclePicker />
+            </FItemRequired>
+          ) : null}
           <FItem name={FItemName.Pet} valuePropName={"checked"}>
             <Checkbox>{t("pet")}</Checkbox>
           </FItem>

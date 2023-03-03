@@ -12,6 +12,16 @@
     "children": "Children",
     "seniors": "Seniors"
   },
+  "parcelVehiclePicker": {
+    "label": "Vehicle type",
+    "Camper": "Camper",
+    "Caravan": "Caravan",
+    "Tent": "Tent",
+    "camperSize": "Camper size",
+    "caravanSize": "Caravan size",
+    "tentSize": "Tent size",
+    "awningSize": "Awning size"
+  },
   "pet": "Pet",
   "boatRope": "Boat rope",
   "babyEquipment": "7-day rental of baby equipment (Monsters stroller, baby chair, baby cot, bath tub).",
