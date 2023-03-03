@@ -1,4 +1,5 @@
-.formItemExtended {
+.formItemExtended,
+.shortFormItemExtended {
   margin-bottom: 20px;
 
   :global {
@@ -13,6 +14,16 @@
       label {
         height: 26px;
       }
+    }
+  }
+}
+
+.shortFormItemExtended {
+  width: 50%;
+
+  :global {
+    .ant-picker {
+      width: 100%;
     }
   }
 }

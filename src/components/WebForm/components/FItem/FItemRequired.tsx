@@ -7,11 +7,17 @@ import classes from "./FItem.module.scss";
 export const FItemRequired = (props: FItemProps) => {
   const { t } = useTranslation();
 
-  const { className, ...rest } = props;
+  const { short, className, ...rest } = props;
+
+  const getClass = () => {
+    return short
+      ? classNames(classes.shortFormItemExtended, className)
+      : classNames(classes.formItemExtended, className);
+  };
   return (
     <FormItem
       labelAlign={"left"}
-      className={classNames(classes.formItemExtended, className)}
+      className={getClass()}
       rules={[{ required: true, message: t("mandatoryField") }]}
       {...rest}
     >
