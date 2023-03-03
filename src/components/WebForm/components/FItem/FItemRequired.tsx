@@ -18,7 +18,7 @@ export const FItemRequired = (props: FItemProps) => {
     <FormItem
       labelAlign={"left"}
       className={getClass()}
-      rules={[{ required: true, message: t("mandatoryField") }]}
+      // rules={[{ required: true, message: t("mandatoryField") }]}
       {...rest}
     >
       {props.children}

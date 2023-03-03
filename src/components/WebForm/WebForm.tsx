@@ -1,8 +1,10 @@
 import { CloseSquareOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Checkbox, DatePicker, Form, FormListFieldData, Radio } from "antd";
-import { useState } from "react";
+import { Button, Checkbox, DatePicker, Form, FormListFieldData } from "antd";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AccommodationTypePicker } from "src/components/WebForm/components/AccommodationTypePicker/AccommodationTypePicker";
+import { CategoryPicker } from "src/components/WebForm/components/CategoryPicker/CategoryPicker";
+import { AccommodationCategory } from "src/components/WebForm/components/CategoryPicker/enums/AccommodationCategory";
 import { FItem } from "src/components/WebForm/components/FItem/FItem";
 import { FItemRequired } from "src/components/WebForm/components/FItem/FItemRequired";
 import { GuestInformationSection } from "src/components/WebForm/components/GuestInformationSection/GuestInformationSection";
@@ -17,8 +19,10 @@ const { RangePicker } = DatePicker;
 export const WebForm = () => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
-  const [category, setCategory] = useState("mobileHome");
+  const [category, setCategory] = useState<AccommodationCategory>(AccommodationCategory.MobileHome);
   const accommodationTypeHasNextToSea = true;
+
+  const isParcel = useMemo(() => category === AccommodationCategory.CampingPitch, [category]);
 
   const handleSubmit = (values: any) => {
     console.log(values);
@@ -71,21 +75,10 @@ export const WebForm = () => {
 
   return (
     <div className={classes.wrap}>
-      <span>{t("accommodationTypeCategory")}</span>
-      <Radio.Group
-        className={classes.category}
-        value={category}
-        onChange={(e) => {
-          e.preventDefault();
-          setCategory(e.target.value);
-        }}
-      >
-        <Radio value={"mobileHome"}>Mobilne kućice</Radio>
-        <Radio value={"bungalow"}>Bungalovi</Radio>
-        <Radio value={"campingPitch"}>Parcele</Radio>
-      </Radio.Group>
-
       <Form className={classes.form} layout={"vertical"} onFinish={handleSubmit} form={form}>
+        <FItemRequired name={FItemName.AccommodationCategory}>
+          <CategoryPicker category={category} setValue={setCategory} formRef={form} />
+        </FItemRequired>
         <div className={classes.mainAccommodation}>
           <h2>{`${t("mainAccommodation")}`}</h2>
           <FItemRequired label={t("period")} name={FItemName.Period}>

@@ -1,6 +1,7 @@
 export enum FItemName {
   Period = "period",
   AccommodationType = "accommodationType",
+  AccommodationCategory = "accommodationCategory",
   NextToSea = "nextToSea",
   GuestPicker = "guestPicker",
   Pet = "pet",
