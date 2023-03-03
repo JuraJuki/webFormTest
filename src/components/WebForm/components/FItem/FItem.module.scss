@@ -1,0 +1,11 @@
+.formItemExtended {
+  :global {
+    .ant-form-item-label {
+      padding: 0;
+
+      label {
+        height: 26px;
+      }
+    }
+  }
+}

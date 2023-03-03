@@ -9,7 +9,7 @@ import ReactDOM from "react-dom/client";
 import { FormContextProvider } from "src/context/FormContext/FormContextProvider";
 import App from "./App";
 import "./i18n";
-import "./index.css";
+import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
 
 dayjs.locale("hr");

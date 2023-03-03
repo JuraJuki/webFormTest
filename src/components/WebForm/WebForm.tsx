@@ -1,4 +1,4 @@
-import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import { CloseSquareOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Checkbox, DatePicker, Form, FormListFieldData, Radio } from "antd";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -32,33 +32,30 @@ export const WebForm = () => {
       <>
         {fields.map((field) => (
           <div key={field.key} className={classes.extraAccommodation}>
-            <h2>{`${t("extraAccommodation")} ${field.name + 1}`}</h2>
-            <Form.Item>
-              <FItem
-                label={t("accommodationType")}
-                name={[field.name, FItemName.AccommodationType]}
-              >
-                <AccommodationTypePicker />
+            <div className={classes.extraAccommodationHeader}>
+              <h2>{`${t("extraAccommodation")} ${field.name + 1}`}</h2>
+              <CloseSquareOutlined className={classes.close} onClick={() => remove(field.name)} />
+            </div>
+            <FItem label={t("accommodationType")} name={[field.name, FItemName.AccommodationType]}>
+              <AccommodationTypePicker />
+            </FItem>
+            {accommodationTypeHasNextToSea ? (
+              <FItem name={[field.name, FItemName.NextToSea]} valuePropName={"checked"}>
+                <Checkbox>{t("nextToSea")}</Checkbox>
               </FItem>
-              {accommodationTypeHasNextToSea ? (
-                <FItem name={[field.name, FItemName.NextToSea]} valuePropName={"checked"}>
-                  <Checkbox>{t("nextToSea")}</Checkbox>
-                </FItem>
-              ) : null}
-              <FItem label={t("personPicker.label")} name={[field.name, FItemName.GuestPicker]}>
-                <GuestPicker />
-              </FItem>
-              <FItem name={[field.name, FItemName.Pet]} valuePropName={"checked"}>
-                <Checkbox>{t("pet")}</Checkbox>
-              </FItem>
-              <FItem name={[field.name, FItemName.BoatRope]} valuePropName={"checked"}>
-                <Checkbox>{t("boatRope")}</Checkbox>
-              </FItem>
-              <FItem name={[field.name, FItemName.BabyEquipment]} valuePropName={"checked"}>
-                <Checkbox>{t("babyEquipment")}</Checkbox>
-              </FItem>
-            </Form.Item>
-            <MinusOutlined onClick={() => remove(field.name)} />
+            ) : null}
+            <FItem label={t("personPicker.label")} name={[field.name, FItemName.GuestPicker]}>
+              <GuestPicker />
+            </FItem>
+            <FItem name={[field.name, FItemName.Pet]} valuePropName={"checked"}>
+              <Checkbox>{t("pet")}</Checkbox>
+            </FItem>
+            <FItem name={[field.name, FItemName.BoatRope]} valuePropName={"checked"}>
+              <Checkbox>{t("boatRope")}</Checkbox>
+            </FItem>
+            <FItem name={[field.name, FItemName.BabyEquipment]} valuePropName={"checked"}>
+              <Checkbox>{t("babyEquipment")}</Checkbox>
+            </FItem>
           </div>
         ))}
 
