@@ -6,4 +6,11 @@ export enum FItemName {
   Pet = "pet",
   BoatRope = "boatRope",
   BabyEquipment = "babyEquipment",
+  FirstName = "firstName",
+  LastName = "lastName",
+  Email = "email",
+  Birthday = "birthday",
+  Country = "country",
+  PhoneNumber = "phoneNumber",
+  Note = "note",
 }

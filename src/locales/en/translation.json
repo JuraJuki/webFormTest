@@ -15,5 +15,14 @@
   "pet": "Pet",
   "boatRope": "Boat rope",
   "babyEquipment": "7-day rental of baby equipment (Monsters stroller, baby chair, baby cot, bath tub).",
-  "submitBtn": "Submit"
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "email": "Email",
+  "birthday": "Birthday",
+  "country": "Country",
+  "phoneNumber": "Phone number",
+  "note": "Note",
+  "submitBtn": "Submit",
+  "enterYourInformation": "Enter your information",
+  "mandatoryField": "Mandatory field"
 }

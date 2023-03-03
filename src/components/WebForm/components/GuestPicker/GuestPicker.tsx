@@ -94,11 +94,11 @@ export const GuestPicker = ({ value = "", onChange }: GuestPickerProps) => {
         case Guest.Adult:
           return t("personPicker.adults");
         case Guest.Child02:
-          return t("personPicker.children");
+          return `${t("personPicker.children")} 0-2`;
         case Guest.Child35:
-          return t("personPicker.children");
+          return `${t("personPicker.children")} 3-5`;
         case Guest.Child611:
-          return t("personPicker.children");
+          return `${t("personPicker.children")} 6-11`;
         case Guest.Senior:
           return t("personPicker.seniors");
       }

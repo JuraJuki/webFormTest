@@ -1,5 +1,12 @@
 .formItemExtended {
+  margin-bottom: 20px;
+
   :global {
+    .ant-form-item-explain {
+      font-size: 13px;
+      margin-left: 2px;
+    }
+
     .ant-form-item-label {
       padding: 0;
 

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AccommodationTypePicker } from "src/components/WebForm/components/AccommodationTypePicker/AccommodationTypePicker";
 import { FItem } from "src/components/WebForm/components/FItem/FItem";
+import { FItemRequired } from "src/components/WebForm/components/FItem/FItemRequired";
 import { GuestInformationSection } from "src/components/WebForm/components/GuestInformationSection/GuestInformationSection";
 import { GuestPicker } from "src/components/WebForm/components/GuestPicker/GuestPicker";
 import { FItemName } from "src/components/WebForm/enums/FItemName";
@@ -87,24 +88,24 @@ export const WebForm = () => {
       <Form className={classes.form} layout={"vertical"} onFinish={handleSubmit} form={form}>
         <div className={classes.mainAccommodation}>
           <h2>{`${t("mainAccommodation")}`}</h2>
-          <FItem label={t("period")} name={FItemName.Period}>
+          <FItemRequired label={t("period")} name={FItemName.Period}>
             <RangePicker
               locale={getLocale(AppLanguage.HR)}
               format={"DD.MM.YYYY."}
               className={classes.rangePicker}
             />
-          </FItem>
-          <FItem label={t("accommodationType")} name={FItemName.AccommodationType}>
+          </FItemRequired>
+          <FItemRequired label={t("accommodationType")} name={FItemName.AccommodationType}>
             <AccommodationTypePicker />
-          </FItem>
+          </FItemRequired>
           {accommodationTypeHasNextToSea ? (
             <FItem name={FItemName.NextToSea} valuePropName={"checked"}>
               <Checkbox>{t("nextToSea")}</Checkbox>
             </FItem>
           ) : null}
-          <FItem label={t("personPicker.label")} name={FItemName.GuestPicker}>
+          <FItemRequired label={t("personPicker.label")} name={FItemName.GuestPicker}>
             <GuestPicker />
-          </FItem>
+          </FItemRequired>
           <FItem name={FItemName.Pet} valuePropName={"checked"}>
             <Checkbox>{t("pet")}</Checkbox>
           </FItem>
